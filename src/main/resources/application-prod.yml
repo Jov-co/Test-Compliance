@@ -4,3 +4,6 @@ spring:
     username: ${PROD_DB_USER}
     password: ${PROD_DB_PASSWORD}
     name: fincomp-back
+app:
+  java:
+    version: 19
