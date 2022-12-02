@@ -14,9 +14,7 @@
 	<name>Dev_FinComp</name>
 	<description>Software scraping, develop with functionalities and business characteristics</description>
 	<properties>
-		<java.version>19</java.version>
-		<maven.compiler.source>1.8</maven.compiler.source>
-		<maven.compiler.target>1.8</maven.compiler.target>
+		<java.version>18</java.version>
 	</properties>
 
 	<dependencies>
@@ -94,11 +92,6 @@
                     <target>18</target>
                 </configuration>
             </plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-deploy-plugin</artifactId>
-			</plugin>
-        </plugins>
-
+		</plugins>
 	</build>
 </project>
