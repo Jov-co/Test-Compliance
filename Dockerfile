@@ -1,5 +1,4 @@
 FROM amazoncorretto:19
-
 RUN yum install -y tar which gzip \
   && rm -rf /var/cache/yum/* \
   && yum clean all
