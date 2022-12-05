@@ -3,6 +3,7 @@ package com.fincomp.Dev_FinComp.Services.Implements;
 
 import com.fincomp.Dev_FinComp.Entities.Consult;
 import com.fincomp.Dev_FinComp.Entities.Result;
+import com.fincomp.Dev_FinComp.Respositories.ConsultRespository;
 import com.fincomp.Dev_FinComp.Respositories.ResultRespository;
 import com.fincomp.Dev_FinComp.Services.SearchImpl.Sdn;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,9 @@ public class OfacSdnService {
 
     @Autowired
     private ResultRespository resultRespository;
+
+    @Autowired
+    private ConsultRespository consultRespository;
 
 
     public final String MORE_INFORMATION = "https://sanctionssearch.ofac.treas.gov/Details.aspx?id=";
@@ -44,6 +48,8 @@ public class OfacSdnService {
             result.setName(element.getElementsByTagName("lastName").item(0).getTextContent());
             result.setEntityType(element.getElementsByTagName("sdnType").item(0).getTextContent());
             result.setPrograms(element.getElementsByTagName("program").item(0).getTextContent());
+            Consult opt = consultRespository.save(consult);
+            result.setConsult(opt);
             Optional<Result> obj = Optional.of(resultRespository.save(result));
             return obj.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
 
@@ -57,11 +63,14 @@ public class OfacSdnService {
                 result.setName(element.getElementsByTagName("lastName").item(0).getTextContent());
                 result.setEntityType(element.getElementsByTagName("sdnType").item(0).getTextContent());
                 result.setPrograms(element.getElementsByTagName("program").item(0).getTextContent());
+                Consult opt = consultRespository.save(consult);
+                result.setConsult(opt);
                 Optional<Result> obj = Optional.of(resultRespository.save(result));
                 return obj.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
             }
         }
-
+        Consult opt = consultRespository.save(consult);
+        result.setConsult(opt);
         result.setPageName(PAGE_NAME);
         result.setStatusSearch(NOT_FOUND);
         Optional<Result> obj = Optional.of(resultRespository.save(result));
