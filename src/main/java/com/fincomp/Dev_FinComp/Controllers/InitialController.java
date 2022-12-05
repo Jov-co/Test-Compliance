@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin("*")
 public class InitialController {
 
-    @GetMapping
+    @GetMapping(value = "/")
     public String initialize(){
         return """
                 <!doctype html>
