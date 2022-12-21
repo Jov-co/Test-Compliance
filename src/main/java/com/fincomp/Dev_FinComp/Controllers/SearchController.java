@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -24,6 +25,7 @@ public class SearchController {
 
     @PostMapping(value = "/find")
     public ResponseEntity<Result> searchInformation(@RequestBody Consult consult){
+        //consult.setConsultationDate(new Date());
         return service.searchInformation(consult);
     }
 
