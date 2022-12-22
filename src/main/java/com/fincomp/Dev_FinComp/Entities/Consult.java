@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Data
@@ -13,7 +14,7 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name = "consults")
 
-public class Consult {
+public class Consult implements Serializable {
 
     @Id
     @Column(name = "id_consult")
