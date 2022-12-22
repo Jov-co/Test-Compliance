@@ -8,7 +8,7 @@ import java.io.File;
 
 public interface SearchXML {
 
-    Document readFile(File file);
+    Document readFile();
 
     Node existsId(String id);
 
