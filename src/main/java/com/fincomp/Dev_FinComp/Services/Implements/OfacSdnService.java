@@ -13,7 +13,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 
 import java.time.LocalDateTime;
-import java.util.Date;
+import java.time.ZoneId;
 import java.util.Optional;
 
 /**
@@ -41,7 +41,7 @@ public class OfacSdnService {
         Result result = new Result();
         String id = consult.getIdentificationNumber();
         String name = consult.getName();
-        consult.setConsultationDate(LocalDateTime.now());
+        consult.setConsultationDate(LocalDateTime.now(ZoneId.of("UTC-5")));
         Node byId = sdn.existsId(id);
 
         if (byId != null){
