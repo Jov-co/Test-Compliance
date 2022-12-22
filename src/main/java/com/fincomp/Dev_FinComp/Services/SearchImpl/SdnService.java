@@ -18,8 +18,7 @@ import java.net.URLConnection;
 
 @Service
 public class SdnService implements SearchXML {
-    @Getter
-    private final File FILE = new File("src/main/java/com/fincomp/Dev_FinComp/Documents/Ofac/sdn.xml");
+
 
     private final URL url;
 
