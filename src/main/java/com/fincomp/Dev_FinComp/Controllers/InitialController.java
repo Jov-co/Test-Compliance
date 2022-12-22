@@ -18,7 +18,7 @@ public class InitialController {
                     <title>Api-Fincomp</title>
                   </head>
                   <body>
-                    <h1>Hola, Mauro!</h1>
+                    <h1>Api Construida</h1>
                   </body>
                 </html>
                 """;
