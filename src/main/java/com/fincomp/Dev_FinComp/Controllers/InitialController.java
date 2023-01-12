@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin("*")
 public class InitialController {
 
-    @GetMapping
+    @GetMapping(value = "/")
     public String initialize(){
         return """
                 <!doctype html>
@@ -18,7 +18,7 @@ public class InitialController {
                     <title>Api-Fincomp</title>
                   </head>
                   <body>
-                    <h1>Hola, Mauro!</h1>
+                    <h1>Api Construida</h1>
                   </body>
                 </html>
                 """;

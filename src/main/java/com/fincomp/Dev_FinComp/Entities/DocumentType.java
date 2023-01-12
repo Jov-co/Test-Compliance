@@ -5,9 +5,10 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Data @NoArgsConstructor @AllArgsConstructor @Entity @Table(name = "document_types")
-public class DocumentType {
+public class DocumentType implements Serializable {
 
     @Id
     @Column(name = "id_doc_type")

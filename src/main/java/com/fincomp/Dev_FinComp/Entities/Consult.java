@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Data
@@ -13,23 +14,23 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name = "consults")
 
-public class Consult {
+public class Consult implements Serializable {
 
     @Id
     @Column(name = "id_consult")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idConsult;
 
-    @Column(name = "consultation_date", nullable = false)
+    @Column(name = "consultation_date")
     private LocalDateTime consultationDate;
 
-    @Column(name = "name", nullable = false)
+    @Column(name = "name")
     private String name;
 
     @Column(name = "last_name")
     private String lastName;
 
-    @Column(name = "identification_number", nullable = false)
+    @Column(name = "identification_number")
     private String identificationNumber;
 
     @ManyToOne(targetEntity = DocumentType.class, cascade = CascadeType.ALL)
