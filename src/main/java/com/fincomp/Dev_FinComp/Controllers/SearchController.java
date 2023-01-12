@@ -7,8 +7,7 @@ import com.fincomp.Dev_FinComp.Services.Implements.OfacSdnService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -24,9 +23,11 @@ public class SearchController {
     ConsultRespository form;
 
     @PostMapping(value = "/find")
-    public ResponseEntity<Result> searchInformation(@RequestBody Consult consult){
-        //consult.setConsultationDate(new Date());
-        return service.searchInformation(consult);
+    public ResponseEntity<ArrayList<Result>> searchInformation(@RequestBody Consult consult){
+        ArrayList<Result> respuesta = new ArrayList<>();
+        respuesta.add(service.searchInformation(consult));
+        Optional<ArrayList<Result>> obj = Optional.of(respuesta);
+        return obj.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @GetMapping(value = "/")

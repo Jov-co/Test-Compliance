@@ -37,7 +37,7 @@ public class OfacSdnService {
     public final String NOT_FOUND = "Not Found";
 
 
-    public ResponseEntity<Result> searchInformation(Consult consult){
+    public Result searchInformation(Consult consult){
         Result result = new Result();
         String id = consult.getIdentificationNumber();
         String name = consult.getName();
@@ -55,8 +55,8 @@ public class OfacSdnService {
             result.setPrograms(element.getElementsByTagName("program").item(0).getTextContent());
             Consult opt = consultRespository.save(consult);
             result.setConsult(opt);
-            Optional<Result> obj = Optional.of(resultRespository.save(result));
-            return obj.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+            Result obj = resultRespository.save(result);
+            return obj;
 
         } else {
             Node byName = sdn.existsName(name);
@@ -70,16 +70,16 @@ public class OfacSdnService {
                 result.setPrograms(element.getElementsByTagName("program").item(0).getTextContent());
                 Consult opt = consultRespository.save(consult);
                 result.setConsult(opt);
-                Optional<Result> obj = Optional.of(resultRespository.save(result));
-                return obj.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+                Result obj = resultRespository.save(result);
+                return obj;
             }
         }
         Consult opt = consultRespository.save(consult);
         result.setConsult(opt);
         result.setPageName(PAGE_NAME);
         result.setStatusSearch(NOT_FOUND);
-        Optional<Result> obj = Optional.of(resultRespository.save(result));
-        return obj.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+        Result obj = resultRespository.save(result);
+        return obj;
     }
 
 }
